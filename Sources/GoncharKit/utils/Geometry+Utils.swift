@@ -58,13 +58,3 @@ This GeometryElement has bytesPerIndex == \(bytesPerIndex)
   }
 }
 
-extension MeshResource.Contents {
-  public init(planeGeometry: PlaneAnchor.Geometry) {
-    self.init()
-    self.instances = [MeshResource.Instance(id: "main", model: "model")]
-    var part = MeshResource.Part(id: "part", materialIndex: 0)
-    part.positions = MeshBuffers.Positions(planeGeometry.meshVertices.asSIMD3(ofType: Float.self))
-    part.triangleIndices = MeshBuffer(planeGeometry.meshFaces.asUInt32Array())
-    self.models = [MeshResource.Model(id: "model", parts: [part])]
-  }
-}
